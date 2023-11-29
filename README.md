@@ -1,6 +1,7 @@
 # Docker Image Size Reporter
 
 ## Overview
+
 This Python script provides functionality to authenticate with AWS Elastic Container Registry (ECR), <br/>
 check Read permissions, find all docker image repositories with tag "latest" and <br/>
 report the sizes of Docker images in specified repositories.
@@ -21,16 +22,19 @@ report the sizes of Docker images in specified repositories.
     ```
 
 ## Execution, Usage
+
 To run the script, execute the following command in the terminal:
 ```commandline
 python3 get_docker_images_size.py ${AWS_ACCESS_KEY_ID} ${AWS_SECRET_ACCESS_KEY}
 ```
 
 ## Command-line Arguments
+
 - `aws_access_key`: AWS Access Key for authentication.
 - `aws_secret_key`: AWS Secret Key for authentication.
 
 ## References
+
 - https://boto3.amazonaws.com/v1/documentation/api/latest/reference/services/ecr/client/describe_images.html
 - https://boto3.amazonaws.com/v1/documentation/api/1.26.83/reference/services/ecr/client/describe_repositories.html
 - https://pypi.org/project/tabulate/

@@ -1,9 +1,10 @@
 #!/usr/local/bin/python3
 
 import argparse
-import boto3
 import logging
 import sys
+
+import boto3
 from tabulate import tabulate
 
 class AwsEcrAuthenticator:
