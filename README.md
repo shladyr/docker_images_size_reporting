@@ -34,6 +34,7 @@ python3 get_docker_images_size.py ${AWS_ACCESS_KEY_ID} ${AWS_SECRET_ACCESS_KEY}
 ## References
 - https://boto3.amazonaws.com/v1/documentation/api/latest/reference/services/ecr/client/describe_images.html
 - https://boto3.amazonaws.com/v1/documentation/api/1.26.83/reference/services/ecr/client/describe_repositories.html
+- https://pypi.org/project/tabulate/
 
 ## Important Note
 Beginning with Docker version 1.9, the Docker client compresses image layers <br/> 

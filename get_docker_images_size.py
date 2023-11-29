@@ -45,7 +45,7 @@ class AwsEcrAuthenticator:
             logging.error(f'Error authenticating to AWS ECR: {e}')
             sys.exit(1)
 
-    def check_read_permissions_to_aws_ecr(self, repository_name='ares/amp-scanner', tag='latest'):
+    def check_read_permissions_to_aws_ecr(self, repository_name='project/application', tag='latest'):
         try:
             logging.info(f'Checking Read permissions to AWS ECR by pulling "{repository_name}:{tag}" image...')
 
