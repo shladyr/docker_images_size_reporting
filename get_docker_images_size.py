@@ -8,18 +8,35 @@ import boto3
 from tabulate import tabulate
 
 class AwsEcrAuthenticator:
+    """
+    Class for authenticating with AWS ECR and checking read permissions.
+    """
     def __init__(self, aws_access_key=None, aws_secret_key=None):
+        """
+        Initialize the AwsEcrAuthenticator instance.
+
+        :param aws_access_key: AWS Access Key
+        :param aws_secret_key: AWS Secret Key
+        """
         self.aws_access_key = aws_access_key
         self.aws_secret_key = aws_secret_key
         self.ecr_client = None
 
     def configure_logging(self):
+        """
+        Configure logging settings.
+        """
         logging.basicConfig(
             format='%(asctime)s - %(levelname)s - %(message)s',
             level=logging.INFO
         )
 
     def read_aws_credentials(self):
+        """
+        Read AWS credentials from command line arguments.
+
+        :return: Tuple containing AWS Access Key and AWS Secret Key
+        """
         try:
             parser = argparse.ArgumentParser(description='AWS ECR Authenticator')
             parser.add_argument('aws_access_key', help='AWS Access Key')
@@ -31,6 +48,11 @@ class AwsEcrAuthenticator:
             sys.exit(1)
 
     def authenticate_to_aws_ecr(self):
+        """
+        Authenticate to AWS ECR using provided AWS credentials.
+
+        :return: Boto3 ECR client
+        """
         try:
             self.configure_logging()
             logging.info('Authenticating to AWS ECR...')
@@ -47,6 +69,12 @@ class AwsEcrAuthenticator:
             sys.exit(1)
 
     def check_read_permissions_to_aws_ecr(self, repository_name='project/application', tag='latest'):
+        """
+        Check read permissions to AWS ECR by attempting to pull a Docker image.
+
+        :param repository_name: ECR repository name
+        :param tag: Docker image tag
+        """
         try:
             logging.info(f'Checking Read permissions to AWS ECR by pulling "{repository_name}:{tag}" image...')
 
@@ -63,11 +91,24 @@ class AwsEcrAuthenticator:
 
 
 class DockerImageSizeReporter:
+    """
+    Class for reporting the sizes of Docker images in AWS ECR repositories.
+    """
     def __init__(self, ecr_client):
+        """
+        Initialize the DockerImageSizeReporter instance.
+
+        :param ecr_client: Boto3 ECR client
+        """
         self.ecr_client = ecr_client
         self.image_sizes = {}  # Dictionary to store image sizes
 
     def get_list_of_all_repositories(self):
+        """
+        Get a list of all AWS ECR repositories.
+
+        :return: List of repository names
+        """
         try:
             logging.info('Getting list of all Aws ECR repositories...')
             repositories = self.ecr_client.describe_repositories()['repositories']
@@ -79,6 +120,11 @@ class DockerImageSizeReporter:
             sys.exit(1)
 
     def get_size_of_docker_image(self, repository_name):
+        """
+        Get the size of Docker images in the specified repository.
+
+        :param repository_name: ECR repository name
+        """
         try:
             logging.info(f'Getting size of Docker image in repository: {repository_name}...')
             images = self.ecr_client.describe_images(repositoryName=repository_name)['imageDetails']
@@ -98,6 +144,9 @@ class DockerImageSizeReporter:
             sys.exit(1)
 
     def build_table_top_size_report(self):
+        """
+        Build and display a table of top Docker image sizes.
+        """
         try:
             logging.info('Building table of top Docker image sizes...')
             # Sort rows by size from higher to lower
@@ -113,6 +162,10 @@ class DockerImageSizeReporter:
 
 
 def main():
+    """
+    Main function to run the AWS ECR authentication and Docker image size reporting.
+    """
+
     # Read AWS credentials
     aws_access_key, aws_secret_key = AwsEcrAuthenticator().read_aws_credentials()
 

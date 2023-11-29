@@ -33,6 +33,10 @@ python3 get_docker_images_size.py ${AWS_ACCESS_KEY_ID} ${AWS_SECRET_ACCESS_KEY}
 - `aws_access_key`: AWS Access Key for authentication.
 - `aws_secret_key`: AWS Secret Key for authentication.
 
+## Example of OUTPUT
+
+![ecr_docker_size.png](doc%2Fecr_docker_size.png)
+
 ## References
 
 - https://boto3.amazonaws.com/v1/documentation/api/latest/reference/services/ecr/client/describe_images.html
