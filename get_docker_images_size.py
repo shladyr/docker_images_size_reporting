@@ -55,11 +55,6 @@ class AwsEcrAuthenticator:
                 layerDigests=[f'sha256:{tag}']
             )
 
-            # import os
-            # logging.info(f'Pulling the TEST Latest image')
-            # os.system('docker pull 776389595347.dkr.ecr.us-west-2.amazonaws.com/ares/amp-scanner:latest')
-            # logging.info(f'Successfully pulled Docker image: {repository_name}:{tag}')
-
             logging.info('Read permissions to AWS ECR verified')
         except Exception as e:
             logging.error(f'Error checking Read permissions to AWS ECR: {e}')
