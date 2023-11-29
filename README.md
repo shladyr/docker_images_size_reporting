@@ -1,10 +1,9 @@
 # Docker Image Size Reporter
 
 ## Overview
-
-Docker Image Size Reporter is a Python script that retrieves information about Docker image sizes <br/>
-from an AWS ECR (Elastic Container Registry) repository. It allows users to specify <br/>
-a list of Docker images, pull them from AWS ECR, and check their sizes.
+This Python script provides functionality to authenticate with AWS Elastic Container Registry (ECR), <br/>
+check Read permissions, find all docker image repositories with tag "latest" and <br/>
+report the sizes of Docker images in specified repositories.
 
 ## Requirements, Prerequisites
 
@@ -37,6 +36,7 @@ python3 get_docker_images_size.py ${AWS_ACCESS_KEY_ID} ${AWS_SECRET_ACCESS_KEY}
 - https://pypi.org/project/tabulate/
 
 ## Important Note
+
 Beginning with Docker version 1.9, the Docker client compresses image layers <br/> 
 before pushing them to a V2 Docker registry. The output of the docker images command <br/>
 shows the uncompressed image size, so it may return a larger image size than <br/> 
