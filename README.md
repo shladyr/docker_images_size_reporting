@@ -61,4 +61,4 @@ See https://docs.aws.amazon.com/cli/latest/reference/ecr/describe-images.html
 
 ## Diagram by pyan3
 
-![Image_pyan.svg](doc/Image_pyan.svg)
+![Image_pyan.png](doc%2FImage_pyan.png)
