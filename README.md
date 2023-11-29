@@ -50,3 +50,11 @@ before pushing them to a V2 Docker registry. The output of the docker images com
 shows the uncompressed image size, so it may return a larger image size than <br/> 
 the image sizes returned by DescribeImages. <br/>
 See https://docs.aws.amazon.com/cli/latest/reference/ecr/describe-images.html
+
+## Diagram by pyfactor
+
+![Image_pyfactor.svg](doc%2FImage_pyfactor.svg)
+
+## Diagram by code2flow
+
+![Image_code2flow.png](doc%2FImage_code2flow.png)
